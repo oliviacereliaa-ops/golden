@@ -1,6 +1,6 @@
 # Kawan Lama Manufacturing — Factory Explorer
 
-A self-contained static webpage for GitHub Pages. No npm install, API key, backend, CDN or build step is required. The supplied logo is embedded. Open index.html in a modern browser to try it locally.
+A portable static website for GitHub Pages. No npm install, API key, backend, CDN or build step is required. The supplied logo is embedded. Product images are packaged in assets/products. Keep history.css, history.js and assets next to index.html. Open index.html in a modern browser to try it locally.
 
 ## Interactions
 
@@ -9,14 +9,17 @@ A self-contained static webpage for GitHub Pages. No npm install, API key, backe
 - Drag to rotate, scroll or use +/- to zoom, and reset to return to campus.
 - Only Now allows Home Textile, Safety Shoe, Spring, Sofa, and Multiline to open a half-width presentation panel. Small screens use a full-width panel.
 - Overview, Capabilities, Growth, and Projects panels are intentionally empty content templates.
-- 2025 & Before uses a factory-wide sidebar with Capabilities, Expansion and Growth tabs. Active areas in B/C are teal; A is unused and grey, D/E are grey with historical use unspecified. Segment popups and building zoom are disabled in this view.
+- 2025 & Before initially shows only the factory and its active B/C areas, with A/D/E grey. Show more opens a full-screen presentation from the right, with the factory as a miniature design element.
+- Step through 2022, 2023, 2024 and 2025 to highlight the associated product pictures and dim the other years. Then open Growth for dimensional animated revenue bars and surrounding products. Previous/Next, year buttons and left/right keys navigate; Escape or Factory overview closes.
+- Product pictures are the supplied PPT images, staged with perspective, plinths, shadows and movement. These are 2.5D image assets, not rotatable 3D product meshes. There are no supplied 3D models.
+- Historical segment popups and building zoom are disabled. The current Now segment panels are retained.
 - 2027 is a layout comparison. Building exploration remains available, but segment panels are disabled.
 - Escape closes the panel or returns to campus. Reduced-motion preference is respected.
 
 ## Publish on GitHub Pages
 
 1. Extract this ZIP.
-2. Upload index.html and .nojekyll to the root of your chosen GitHub repository. README.md is optional.
+2. Upload index.html, history.css, history.js, the complete assets folder and .nojekyll to the root of your chosen GitHub repository. README.md is optional.
 3. In the repository Settings → Pages, choose Deploy from a branch, choose your branch, and choose /(root).
 4. Save. Open the Pages URL provided by GitHub once deployment completes.
 
@@ -28,7 +31,7 @@ Open index.html and find `const SEGMENTS` near the beginning of its script. Each
 
     overview: { title: 'Your headline', body: 'Your presentation text.' }
 
-Factory-wide history is rendered by `renderHistory()`. Product capabilities come from COPY OLIVE.pptx (2022–2025), stored in `CAPABILITY_HISTORY`. Annual revenue, targets, achievement and YoY growth come from the supplied historical revenue image (2021–2025). The overall +175.6% growth and 2.76× multiple are calculated from 153.5 and 423.0. The spatial map remains an early-2025 snapshot, distinct from capability additions throughout 2025.
+The full-screen presentation is rendered by history.js with styling in history.css. Product capabilities and pictures come from COPY OLIVE.pptx (2022–2025), stored in `productYears` with local WebP assets. The earlier inline history renderer remains hidden and is superseded by this presentation. Annual revenue, targets, achievement and YoY growth come from the supplied historical revenue image (2021–2025). The overall +175.6% growth and 2.76× multiple are calculated from 153.5 and 423.0. The spatial map remains an early-2025 snapshot, distinct from capability additions throughout 2025.
 
 The entry quiz asks “What is our 2027 target?” and accepts `630`. It is a client-side presentation gate only: the answer and content are inspectable in the page source, so it does not protect confidential information.
 
@@ -50,4 +53,6 @@ Lightweight canvas-rendered 3D geometry with orthographic projection, animated c
 
 ## Validation
 
-JavaScript syntax checked with Node. Browser checked: campus rendering, Building A zoom/X-ray, Sofa panel open/close, Growth tab, factory-wide historical Capabilities, Expansion and Growth tabs, quiz rejection and acceptance, and disabled segment controls in the 2027 view. Other segment panels use the same shared handler. Mobile layout is implemented but has not been separately device-tested.
+JavaScript syntax checked with Node. Browser checked: campus rendering, Building A zoom/X-ray, Sofa panel open/close, Growth tab, factory-only entry, Show more expansion, 2025 product highlighting, Growth chapter, return to factory and retained Now Home Textile panel, quiz rejection and acceptance, and disabled segment controls in the 2027 view. Other segment panels use the same shared handler. Mobile layout is implemented but has not been separately device-tested.
+
+Product pictures remain faithful to the supplied deck, including any existing white backgrounds or marks. Product imagery is illustrative; the source does not provide distinct pictures for every named capability (for example Cover and Towel are text highlights).
